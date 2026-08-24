@@ -1,10 +1,4 @@
-"""Flight Radar Check-in Simulator API.
-
-All mutable simulator state lives in Redis.  The static flight manifest is
-deliberately small and fictional so a restarted Redis instance simply resets
-the demo.  A distributed Redis lock protects a check-in when multiple API
-replicas handle requests concurrently.
-"""
+"""Flight Radar Check-in Simulator API."""
 
 from __future__ import annotations
 
@@ -123,7 +117,6 @@ async def acquire_lock(redis: Redis, flight_id: str) -> str:
 
 
 async def release_lock(redis: Redis, flight_id: str, token: str) -> None:
-    # A short Lua script avoids deleting a lock obtained by a later request.
     await redis.eval(
         "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) end return 0",
         1,
