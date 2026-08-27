@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlightDeck Live</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">✦</span><span>FLIGHTDECK</span><em>LIVE</em></div>
+        <div class="system-status"><span class="pulse"></span>Operations online</div>
+      </header>
+      <section class="hero">
+        <div><p class="eyebrow">BRUSSELS AIR OPERATIONS</p><h1>Check-in, in motion.</h1><p class="lede">A live view of each departure as the passenger manifest fills.</p></div>
+        <div class="clock-card"><span>UTC TIME</span><strong id="utc-clock">--:--:--</strong><small id="next-tick-label">Next check-in loading…</small></div>
+      </section>
+      <section id="flight-cards" class="flight-cards" aria-live="polite"></section>
+      <section class="detail-grid">
+        <article class="panel flight-panel"><div id="flight-detail"></div></article>
+        <article class="panel occupancy-panel"><p class="eyebrow">BOARDING PROGRESS</p><div class="gauge" id="gauge"><div><strong id="occupancy-value">0%</strong><span>occupied</span></div></div><p id="occupancy-copy" class="muted"></p></article>
+        <article class="panel manifest-panel"><div class="panel-heading"><div><p class="eyebrow">PASSENGER MANIFEST</p><h2>Ready for departure</h2></div><span id="manifest-count" class="counter">0 / 0</span></div><div id="manifest" class="manifest"></div></article>
+        <article class="panel events-panel"><div class="panel-heading"><div><p class="eyebrow">LIVE EVENT LOG</p><h2>Latest activity</h2></div><span class="live-dot">LIVE</span></div><div id="events" class="events"></div></article>
+      </section>
+      <p id="message" class="message" role="status"></p>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
